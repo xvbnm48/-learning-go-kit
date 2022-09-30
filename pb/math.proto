@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "github.com/xvbnm48/-learning-go-kit/pb";
+
+service MathService{
+    rpc Add(MathRequest) returns (MathResponse) {}
+    rpc Subtract(MathRequest) returns (MathResponse) {}
+    rpc Multiply(MathRequest) returns (MathResponse) {}
+    rpc Divide(MathRequest) returns (MathResponse) {}
+}
+
+message MathRequest {
+    float NumA = 1;
+    float NumB = 2;
+}
+
+message MathResponse {
+    float Result = 1;
+}
