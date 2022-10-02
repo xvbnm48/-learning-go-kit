@@ -7,6 +7,15 @@ service MathService{
     rpc Subtract(MathRequest) returns (MathResponse) {}
     rpc Multiply(MathRequest) returns (MathResponse) {}
     rpc Divide(MathRequest) returns (MathResponse) {}
+    rpc Palindrome(PalindromeRequest) returns (PalindromeResponse) {}
+}
+
+message PalindromeRequest {
+    string word = 1;
+}
+
+message PalindromeResponse {
+    bool isPalindrome = 1;
 }
 
 message MathRequest {

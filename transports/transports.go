@@ -10,10 +10,11 @@ import (
 )
 
 type gRPCServer struct {
-	add       gt.Handler
-	substract gt.Handler
-	multiply  gt.Handler
-	divide    gt.Handler
+	add        gt.Handler
+	substract  gt.Handler
+	multiply   gt.Handler
+	divide     gt.Handler
+	palindrome gt.Handler
 }
 
 func NewGRPCServer(endpoints endpoints.Endpoints, logger log.Logger) pb.MathServiceServer {
@@ -38,7 +39,21 @@ func NewGRPCServer(endpoints endpoints.Endpoints, logger log.Logger) pb.MathServ
 			decodeMathRequest,
 			encodeMathResponse,
 		),
+		palindrome: gt.NewServer(
+			endpoints.Palindrome,
+			decodePalindromeRequest,
+			encodePalindromeResponse,
+		),
 	}
+}
+
+func (s *gRPCServer) Palindrome(ctx context.Context, req *pb.PalindromeRequest) (*pb.PalindromeResponse, error) {
+	_, resp, err := s.palindrome.ServeGRPC(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.(*pb.PalindromeResponse), nil
 }
 
 func (s *gRPCServer) Add(ctx context.Context, req *pb.MathRequest) (*pb.MathResponse, error) {
@@ -84,4 +99,14 @@ func decodeMathRequest(_ context.Context, request interface{}) (interface{}, err
 func encodeMathResponse(_ context.Context, response interface{}) (interface{}, error) {
 	resp := response.(endpoints.MathResp)
 	return &pb.MathResponse{Result: resp.Result}, nil
+}
+
+func decodePalindromeRequest(_ context.Context, reqest interface{}) (interface{}, error) {
+	req := reqest.(*pb.PalindromeRequest)
+	return endpoints.PalindromeReq{Word: req.Word}, nil
+}
+
+func encodePalindromeResponse(_ context.Context, request interface{}) (interface{}, error) {
+	resp := request.(endpoints.PalindromeResp)
+	return &pb.PalindromeResponse{IsPalindrome: resp.Result}, nil
 }

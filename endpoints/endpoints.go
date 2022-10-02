@@ -8,10 +8,19 @@ import (
 )
 
 type Endpoints struct {
-	Add      endpoint.Endpoint
-	Subtract endpoint.Endpoint
-	Multiply endpoint.Endpoint
-	Divide   endpoint.Endpoint
+	Add        endpoint.Endpoint
+	Subtract   endpoint.Endpoint
+	Multiply   endpoint.Endpoint
+	Divide     endpoint.Endpoint
+	Palindrome endpoint.Endpoint
+}
+
+type PalindromeReq struct {
+	Word string
+}
+
+type PalindromeResp struct {
+	Result bool
 }
 
 type MathReq struct {
@@ -25,10 +34,19 @@ type MathResp struct {
 
 func MakeEndpoints(s service.Service) Endpoints {
 	return Endpoints{
-		Add:      makeAddEndpoint(s),
-		Subtract: makeSubtract(s),
-		Multiply: makeMultiply(s),
-		Divide:   makeDevide(s),
+		Add:        makeAddEndpoint(s),
+		Subtract:   makeSubtract(s),
+		Multiply:   makeMultiply(s),
+		Divide:     makeDevide(s),
+		Palindrome: makePalindrome(s),
+	}
+}
+
+func makePalindrome(s service.Service) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+		req := request.(PalindromeReq)
+		result, _ := s.Palindrome(ctx, req.Word)
+		return PalindromeResp{Result: result}, nil
 	}
 }
 
