@@ -1,3 +1,9 @@
 # GOKIT STRUCTURE 
 
 my journey to learn gRPC and gokit
+in go kit, we have 3 main components. 
+1. Service
+2. endpoint 
+3. transport
+
+additional for add repository for data access
