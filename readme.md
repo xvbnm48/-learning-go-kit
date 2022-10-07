@@ -6,4 +6,8 @@ in go kit, we have 3 main components.
 2. endpoint 
 3. transport
 
-additional for add repository for data access
+additional for add repository for data access.
+
+in gokit, we have 2 main pattern.
+1. service pattern
+2. and endpoint pattern
