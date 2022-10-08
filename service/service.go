@@ -15,7 +15,7 @@ type Service interface {
 	Subtract(ctx context.Context, numA, Numb float32) (float32, error)
 	Multiply(ctx context.Context, numA, Numb float32) (float32, error)
 	Divide(ctx context.Context, numA, Numb float32) (float32, error)
-	Palindrome(ctx context.Context, word string) (bool, error)
+	Palindrome(ctx context.Context, word string) (string, error)
 }
 
 func NewService(logger log.Logger) Service {
@@ -24,13 +24,13 @@ func NewService(logger log.Logger) Service {
 	}
 }
 
-func (s *service) Palindrome(ctx context.Context, word string) (bool, error) {
+func (s *service) Palindrome(ctx context.Context, word string) (string, error) {
 	for i := 0; i < len(word)/2; i++ {
 		if word[i] != word[len(word)-i-1] {
-			return false, nil
+			return "false", nil
 		}
 	}
-	return true, nil
+	return "true", nil
 }
 
 func (s service) Add(ctx context.Context, numA, Numb float32) (float32, error) {

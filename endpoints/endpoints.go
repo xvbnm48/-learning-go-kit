@@ -20,7 +20,7 @@ type PalindromeReq struct {
 }
 
 type PalindromeResp struct {
-	Result bool
+	Result string
 }
 
 type MathReq struct {
