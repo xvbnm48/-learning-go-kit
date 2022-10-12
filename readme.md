@@ -11,3 +11,5 @@ additional for add repository for data access.
 in gokit, we have 2 main pattern.
 1. service pattern
 2. and endpoint pattern
+
+today i will working on new task. Make new service for web config BB dispatch.
