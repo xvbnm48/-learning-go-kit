@@ -14,4 +14,4 @@ in gokit, we have 2 main pattern.
 
 today i will working on new task. Make new service for web config BB dispatch.
 
-date for today is 2022-10-17 , i will working on task with make service and endpoint
+date for today is 2022-10-17 , i will working on task with make service and endpoint. GRPC with gokit.
