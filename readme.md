@@ -17,3 +17,5 @@ today i will working on new task. Make new service for web config BB dispatch.
 date for today is 2022-10-17 , i will working on task with make service and endpoint. GRPC with gokit. microservices.
 
 if single data using sql.query and sql.queryrow. but if multiple data using sql.queryrow. and sql.queryrow.
+
+make transport client and server for today.
