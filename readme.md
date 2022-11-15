@@ -18,4 +18,6 @@ date for today is 2022-10-17 , i will working on task with make service and endp
 
 if single data using sql.query and sql.queryrow. but if multiple data using sql.queryrow. and sql.queryrow.
 
-make transport client and server for today.
+make transport client and server for today. 
+
+today learning use stack driver and setting env for dev
